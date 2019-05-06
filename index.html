@@ -145,8 +145,7 @@ shadowAnchor: [13, 20]
 				<!-- <textarea id="csv" onchange="txtarea()"></textarea> -->
 				<!-- <textarea id="csv1" ></textarea> -->		
 			</div>
-		<script>
-		<!-- <script type="text/javascript"> -->
+		<script>		
 					var tree1 = $("#test-select").treeMultiselect({ enableSelectAll: true, sortable: true , onChange: treeOnChange, searchable: true,
 						sortable: true,
 					startCollapsed: true});
@@ -167,7 +166,7 @@ shadowAnchor: [13, 20]
 					
 					
 					
-		<!-- </ script> -->
+		
 		//codemirror
 		var opciones_editor = CodeMirror.fromTextArea(document.getElementById("opciones"), {
 		lineNumbers: true,
@@ -186,14 +185,27 @@ shadowAnchor: [13, 20]
 		
 		ajusta_Altura();
 		
+		//basemaps
+		var osmMap = L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom: 13});
+		var maveric = L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom: 13});
+		var localMap = L.tileLayer('../tiles/{z}/{x}/{y}.png', {maxZoom: 13});
+		var satMap = L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 14});
+		
 		//instanciamos el mapa
-		var mapa = L.map('mapa', {attributionControl:false}).setView([49, 3], 4);
+		//var mapa = L.map('mapa', {attributionControl:false}).setView([49, 3], 4);
+		var mapa = L.map('mapa',{layers: [satMap]}, {attributionControl:false}).setView([30, 50], 9);
 		
 		
-		L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-		maxZoom: 18
-		}).addTo(mapa);
-		
+		//Base layers definition and addition
+		var baseLayers = {
+			"OSM": osmMap,
+			"Satellite": satMap,			
+			"Maveric":maveric,
+			"Local": localMap,
+		};
+	  
+		 //Add baseLayers to map as control layers
+		 L.control.layers(baseLayers).addTo(mapa);
 		//dotamos de funcionalidad al botón cargar
 		var geo_csv = {};
 		
@@ -207,9 +219,12 @@ shadowAnchor: [13, 20]
 		geo_csv = eval(document.getElementById('opciones').value);
 		geo_csv.addData(document.getElementById('csv').value);
 		mapa.addLayer(geo_csv);
-		}
-		
+		//zoom		
+        mapa.fitBounds(geo_csv.getBounds());		
+		}				
+
 		document.getElementById('cargar').addEventListener('click', cargar, false);
+		
 		
 		</script>
 		
