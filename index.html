@@ -7,18 +7,18 @@
 		<title>Leaflet.geoCSV: Test de opciones</title>
 		
 		<!-- Leaflet 0.5: https://github.com/CloudMade/Leaflet-->
-		<link rel="stylesheet" href="../lib/leaflet.css" />
+		<link rel="stylesheet" href="./lib/leaflet.css" />
 		<!--[if lte IE 8]> <link rel="stylesheet" href="../lib/leaflet.ie.css" />  <![endif]-->  
-		<script src="../lib/leaflet.js"></script>
+		<script src="./lib/leaflet.js"></script>
 		
 		<!-- GeoCSV: https://github.com/joker-x/Leaflet.geoCSV -->
-		<script src="../lib/leaflet.geocsv-src.js"></script>
+		<script src="./lib/leaflet.geocsv-src.js"></script>
 		
 		<!-- CodeMirror -->
-		<link rel="stylesheet" href="../lib/codemirror/codemirror.css">
-		<script src="../lib/codemirror/codemirror.js"></script>
-		<script src="../lib/codemirror/util/matchbrackets.js"></script>
-		<script src="../lib/codemirror/mode-javascript.js"></script>
+		<link rel="stylesheet" href="./lib/codemirror/codemirror.css">
+		<script src="./lib/codemirror/codemirror.js"></script>
+		<script src="./lib/codemirror/util/matchbrackets.js"></script>
+		<script src="./lib/codemirror/mode-javascript.js"></script>
 		
 		<style>	
 			html, body {
@@ -69,10 +69,10 @@
 			font-family: monospace;
 			}
 		</style>
-		<link rel="stylesheet" href="../dist/jquery.tree-multiselect.min.css">	<!--Tree-->	
+		<link rel="stylesheet" href="./dist/jquery.tree-multiselect.min.css">	<!--Tree-->	
 		<script src="./vendor/jquery-1.11.3.min.js"></script>                   <!--Tree-->
 		<script src="./vendor/jquery-ui.min.js"></script>                       <!--Tree-->
-		<script src="../dist/jquery.tree-multiselect.js"></script>              <!--Tree-->
+		<script src="./dist/jquery.tree-multiselect.js"></script>              <!--Tree-->
 	</head>
 	<body>
 		
@@ -138,12 +138,6 @@ shadowAnchor: [13, 20]
 		<div id="mapa"></div>
 		</div>
 		<div id="tree">
-				
-				
-				
-				<!-- <button onclick="additems()">Add</button> -->
-				<!-- <textarea id="csv" onchange="txtarea()"></textarea> -->
-				<!-- <textarea id="csv1" ></textarea> -->		
 			</div>
 		<script>		
 					var tree1 = $("#test-select").treeMultiselect({ enableSelectAll: true, sortable: true , onChange: treeOnChange, searchable: true,
